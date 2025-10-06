@@ -15,27 +15,30 @@ It allows you to browse directories, copy/move/delete files, and manage bookmark
 - Show/hide hidden files
 - Open files with default system apps (`xdg-open`)
 - Lightweight and dependency-free
+- Configurable through JSON config file
+- Comprehensive logging for debugging
+- Built-in help system (press `?` for key bindings)
 
 ---
 
 ## 🧩 Installation
 
-```
-bash
+```bash
 go install github.com/yourusername/go-walker@latest
-Or build manually:
 ```
 
-```
+Or build manually:
+
+```bash
 bash
 git clone https://github.com/yourusername/go-walker.git
 cd go-walker
-go build -ldflags="-s -w" -o walker
+go build -ldflags="-s -w" -o walker cmd/walker/main.go
 ```
 
 Then run:
 
-```
+```bash
 bash
 ./walker
 ```
@@ -48,7 +51,7 @@ bash
 
 - ↑ / ↓    Move cursor
 
-- -→ / ENTER    Enter directory / open file
+- → / ENTER    Enter directory / open file
 
 - ←    Go to parent directory
 
@@ -69,17 +72,35 @@ bash
 - DELETE    Delete file/folder
 
 - ESC    Exit
+- ?      Show help (key bindings)
 
 
 #### 📸 Preview
 (screenshot or GIF can go here later)
 
+#### 🏗️ Architecture
+
+The project is structured into several packages for better maintainability:
+
+- `cmd/walker` - Main entry point
+- `internal/app` - Core application logic
+- `internal/bookmarks` - Bookmarks management
+- `internal/config` - Configuration handling
+- `internal/fs` - File system operations
+- `internal/logging` - Logging utilities
+- `internal/ui` - User interface components
+
+#### 🧪 Testing
+
+The project includes unit tests for all major components:
+
+```bash
+go test ./internal/...
+```
+
 #### 📄 License
 MIT License © 2025 Your Name
 
-🛠️ Built With
-Go
-
-tcell
-
-yaml
+#### 🛠️ Built With
+- Go
+- tcell
